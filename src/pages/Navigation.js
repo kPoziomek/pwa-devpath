@@ -1,20 +1,17 @@
 import { useState } from 'react';
 
 import { Box, Container } from '@mui/system';
-import { AppBar, Toolbar, IconButton, Menu } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Menu, Drawer } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import NavigationMenuButtons from '../helpers/NavigationMenuButtons';
 import NavigationMenuLinks from '../helpers/NavigationMenuLinks';
 import { appRoutes } from '../helpers/LinksDb.js';
 
-//TODO: poprawić zamykanie menu nawigacji
 const Navigation = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const [isOpenNav, setIsOpenNav] = useState(false);
+
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setIsOpenNav(false);
   };
 
   return (
@@ -27,28 +24,19 @@ const Navigation = () => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={() => setIsOpenNav(true)}
               color="inherit"
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
+
+            <Drawer
+              anchor={'left'}
+              open={isOpenNav}
+              sx={{ minWidth: 300 }}
+              onClose={() => setIsOpenNav(false)}
             >
+              {/* nav on mobile */}
               {appRoutes.map((route) => {
                 return (
                   <NavigationMenuLinks
@@ -61,7 +49,7 @@ const Navigation = () => {
                   ></NavigationMenuLinks>
                 );
               })}
-            </Menu>
+            </Drawer>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {appRoutes.map((route) => (

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { MenuItem, Typography, ListItemIcon } from '@mui/material';
+import { List, Typography, ListItemIcon } from '@mui/material';
 
 export const NavigationMenuLinks = ({
   to,
@@ -12,12 +12,20 @@ export const NavigationMenuLinks = ({
   handleCloseNavMenu,
 }) => {
   return (
-    <MenuItem to={to} component={Link} onClick={handleCloseNavMenu}>
+    <List
+      to={to}
+      component={Link}
+      onClick={handleCloseNavMenu}
+      sx={{ p: 2, minWidth: '25%', textDecoration: 'none' }}
+    >
       <ListItemIcon>
         {Icon}
-        <Typography textAlign="center">{routeName}</Typography>
+
+        <Typography sx={{ pl: 2, minWidth: '25%', textAlign: 'center' }}>
+          {routeName}
+        </Typography>
       </ListItemIcon>
-    </MenuItem>
+    </List>
   );
 };
 export { NavigationMenuLinks as default } from './NavigationMenuLinks.js';

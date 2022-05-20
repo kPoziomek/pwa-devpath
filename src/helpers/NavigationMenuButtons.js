@@ -8,7 +8,6 @@ export const NavigationMenuButtons = ({
   routeName,
   handleCloseNavMenu,
 }) => {
-  console.log(id, to, routeName);
   return (
     <Button
       component={Link}
