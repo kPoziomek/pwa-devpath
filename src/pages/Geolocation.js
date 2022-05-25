@@ -1,62 +1,77 @@
-import GoogleMapReact from 'google-map-react';
-import { useEffect, useState, useRef } from 'react';
+import { useMemo, useCallback, useState, useEffect } from 'react';
 import { useGeolocation } from 'react-use';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
-import { IconButton } from '@mui/material';
-const MapMarker = ({ text }) => {
-  return (
-    <div>
-      <MyLocationIcon></MyLocationIcon>
-      <span>{text}</span>
-    </div>
-  );
-};
 
-function MyMapComponent({ center, zoom }) {
-  const ref = useRef();
-
-  useEffect(() => {
-    new window.google.maps.Map(ref.current, {
-      center,
-      zoom,
-    });
-  });
-
-  return <div ref={ref} id="map" />;
-}
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 export const Geolocation = () => {
-  useEffect(() => {}, []);
-  const state = useGeolocation();
-  const [myPosition, setMyPosition] = useState({ lat: 49.81, lng: 19.04 });
-  const [zoom, setZoom] = useState(10);
-  const [defaultData, setDefaultData] = useState({
-    center: {
-      at: 49.8,
-      lng: 19.01,
-    },
-    zoom: 10,
+  const { latitude: lat, longitude: lng } = useGeolocation();
+
+  const { isLoaded } = useLoadScript({
+    id: 'test-map',
+    googleMapsApiKey:
+      process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_API_KEY
+        : null,
+    libraries: ['places', 'directions'],
   });
 
+  const onLoad = useCallback(
+    (map) => {
+      const maps = window.google.maps;
+      let location = null;
+      if (!lat && !lng) {
+        return (location = new maps.LatLng(49.77, 18.97));
+      }
+      location = new maps.LatLng(lat, lng);
+      const service = new maps.places.PlacesService(map);
+
+      const request = {
+        location,
+        radius: 500,
+        type: 'restaurant',
+      };
+
+      const callback = (results) => {
+        const allMarkers = results.map((restaurant) => {
+          return new maps.Marker({
+            title: restaurant?.name,
+            label: restaurant?.name,
+            visible: true,
+            place: {
+              location: restaurant?.geometry?.location,
+              placeId: restaurant?.place_id,
+            },
+          });
+        });
+
+        allMarkers.forEach((marker) => {
+          marker.setMap(map);
+        });
+      };
+
+      service.nearbySearch(request, callback);
+    },
+    [lat, lng]
+  );
+
+  const onUnmount = useCallback((map) => {}, []);
+
   return (
-    <div style={{ height: '50vh', width: '100%' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{
-          googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-          libraries: ['places', 'directions'],
-        }}
-        defaultCenter={myPosition}
-        defaultZoom={zoom}
-        yesIWantToUseGoogleMapApiInternals={true}
-        onGoogleApiLoaded={({ map, maps }) => this.apiHasLoaded(map, maps)}
-      >
-        <MapMarker
-          lat={myPosition.lat}
-          lng={myPosition.lng}
-          text="YourLocation"
-        />
-      </GoogleMapReact>
-    </div>
+    isLoaded && (
+      <>
+        <div style={{ height: '100vh', width: '100%' }}>
+          <GoogleMap
+            mapContainerStyle={{ height: '100vh', width: '100%' }}
+            center={{ lat, lng }}
+            zoom={10}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+          >
+            <Marker position={{ lat, lng }} title="YourLocation" />
+          </GoogleMap>
+        </div>
+      </>
+    )
   );
 };
 
