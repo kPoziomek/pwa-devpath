@@ -1,0 +1,14 @@
+{
+  "app_name": "app",
+  "app_home": "Home",
+  "app_geolocation": "Geolocation",
+  "app_notes": "Notes",
+  "app_camera": "Camera",
+  "app_device": "Devices",
+  "app_weather": "Weather",
+  "user_date": "Hello, today we have {{today, date}}",
+
+  "keyWithCount_one": "{{count}} item",
+  "keyWithCount_other": "{{count}} items",
+  "footer": " Github  <1> PWA-i18next-app </1> source code.<3/>Click and see source code."
+}

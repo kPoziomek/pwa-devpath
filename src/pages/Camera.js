@@ -21,7 +21,7 @@ export const Camera = () => {
         </Typography>
         {source && (
           <Box sx={{ display: 'flex', justifyContent: 'center' }} border={1}>
-            <img src={source} alt={'from camera'}></img>
+            <img src={source} alt="from camera"></img>
           </Box>
         )}
         <Input

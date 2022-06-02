@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { List, Typography, ListItemIcon } from '@mui/material';
-
+import { useTranslation } from 'react-i18next';
 export const NavigationMenuLinks = ({
   to,
 
@@ -11,6 +11,7 @@ export const NavigationMenuLinks = ({
   routeName,
   handleCloseNavMenu,
 }) => {
+  const { t } = useTranslation();
   return (
     <List
       to={to}
@@ -22,7 +23,7 @@ export const NavigationMenuLinks = ({
         {Icon}
 
         <Typography sx={{ pl: 2, minWidth: '25%', textAlign: 'center' }}>
-          {routeName}
+          {t(routeName)}
         </Typography>
       </ListItemIcon>
     </List>

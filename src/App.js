@@ -8,8 +8,12 @@ const Geolocation = lazy(() => import('./pages/Geolocation'));
 const Notes = lazy(() => import('./pages/Notes'));
 const Camera = lazy(() => import('./pages/Camera'));
 const Device = lazy(() => import('./pages/Device'));
+const Weather = lazy(() => import('./pages/Weather'));
 
 function App() {
+  // const handleChange = (lng) => {
+  //   i18n.changeLanguage(lng);
+  // };
   return (
     <div className="App">
       <Router>
@@ -22,6 +26,7 @@ function App() {
             <Route path="/notes" element={<Notes />} />
             <Route path="/camera" element={<Camera />} />
             <Route path="/device" element={<Device />} />
+            <Route path="/weather" element={<Weather />} />
           </Routes>
         </Suspense>
       </Router>

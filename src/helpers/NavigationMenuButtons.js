@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export const NavigationMenuButtons = ({
   id,
@@ -8,6 +9,8 @@ export const NavigationMenuButtons = ({
   routeName,
   handleCloseNavMenu,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Button
       component={Link}
@@ -16,7 +19,7 @@ export const NavigationMenuButtons = ({
       onClick={handleCloseNavMenu}
       sx={{ my: 2, color: 'white', display: 'block' }}
     >
-      {routeName}
+      {t(routeName)}
     </Button>
   );
 };

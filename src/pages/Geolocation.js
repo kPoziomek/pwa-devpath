@@ -1,33 +1,33 @@
-import { useMemo, useCallback, useState, useEffect } from 'react';
-import { useGeolocation } from 'react-use';
+import { useCallback } from 'react';
 
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import usePosition from '../helpers/usePosition.js';
 
 export const Geolocation = () => {
-  const { latitude: lat, longitude: lng } = useGeolocation();
+  const { lat, lng, error } = usePosition();
+  const libraries = ['places'];
 
   const { isLoaded } = useLoadScript({
     id: 'test-map',
-    googleMapsApiKey:
-      process.env.NODE_ENV === 'development'
-        ? process.env.REACT_APP_API_KEY
-        : null,
-    libraries: ['places', 'directions'],
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
   });
 
   const onLoad = useCallback(
     (map) => {
       const maps = window.google.maps;
-      let location = null;
-      if (!lat && !lng) {
-        return (location = new maps.LatLng(49.77, 18.97));
+      let location = new maps.LatLng(lat, lng);
+      if (error === null) {
+        const LS = localStorage.getItem('location');
+        const parsedLS = JSON.parse(LS);
+
+        location = new maps.LatLng(parsedLS);
       }
-      location = new maps.LatLng(lat, lng);
       const service = new maps.places.PlacesService(map);
 
       const request = {
         location,
-        radius: 500,
+        radius: 1500,
         type: 'restaurant',
       };
 
@@ -51,27 +51,27 @@ export const Geolocation = () => {
 
       service.nearbySearch(request, callback);
     },
-    [lat, lng]
+    [error, lat, lng]
   );
 
   const onUnmount = useCallback((map) => {}, []);
-
+  if (!isLoaded) {
+    return <div>Loading</div>;
+  }
   return (
-    isLoaded && (
-      <>
-        <div style={{ height: '100vh', width: '100%' }}>
-          <GoogleMap
-            mapContainerStyle={{ height: '100vh', width: '100%' }}
-            center={{ lat, lng }}
-            zoom={10}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            <Marker position={{ lat, lng }} title="YourLocation" />
-          </GoogleMap>
-        </div>
-      </>
-    )
+    <>
+      <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMap
+          mapContainerStyle={{ height: '100vh', width: '100%' }}
+          center={{ lat, lng }}
+          zoom={15}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+        >
+          <Marker position={{ lat, lng }} label="You" />
+        </GoogleMap>
+      </div>
+    </>
   );
 };
 

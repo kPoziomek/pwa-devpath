@@ -21,17 +21,11 @@ export const Device = () => {
           inputProps={{ 'aria-label': 'controlled' }}
         />
         {orientation && (
-          <ul>
-            <li>
-              ɑ: <code>{orientation.alpha}</code>
-            </li>
-            <li>
-              β: <code>{orientation.beta}</code>
-            </li>
-            <li>
-              γ: <code>{orientation.gamma}</code>
-            </li>
-          </ul>
+          <div data-testid="device-position">
+            <div>alpha: {orientation.alpha}</div>
+            <div>beta {orientation.beta}</div>
+            <div>gamma {orientation.gamma}</div>
+          </div>
         )}
         {error ? <div className="error">{error.message}</div> : null}
       </div>
