@@ -3,6 +3,7 @@ import TerrainIcon from '@mui/icons-material/Terrain';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import CameraIcon from '@mui/icons-material/Camera';
 import BuildIcon from '@mui/icons-material/Build';
+import QrCode2Icon from '@mui/icons-material/QrCode2';
 export const appRoutes = [
   {
     id: 1,
@@ -34,13 +35,20 @@ export const appRoutes = [
   },
   {
     id: 5,
+    to: '/qr',
+    routeName: 'app_qr',
+    Icon: <QrCode2Icon />,
+    fontSize: 'small',
+  },
+  {
+    id: 6,
     to: '/device',
     routeName: 'app_device',
     Icon: <BuildIcon />,
     fontSize: 'small',
   },
   {
-    id: 6,
+    id: 7,
     to: '/weather',
     routeName: 'app_weather',
     Icon: <BuildIcon />,

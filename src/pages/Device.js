@@ -6,7 +6,7 @@ export const Device = () => {
 
   const { orientation, requestAccess, revokeAccess, error } =
     useDeviceOrientation();
-
+  console.log(orientation);
   const handleChange = (e) => {
     setChecked(e.target.checked);
     return checked ? revokeAccess() : requestAccess();
@@ -34,5 +34,3 @@ export const Device = () => {
 };
 
 export { Device as default } from './Device.js';
-
-/// TODO: check is working after PWA install

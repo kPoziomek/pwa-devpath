@@ -5,15 +5,16 @@ const NoteForm = ({ handleNewNote, addNote, note }) => {
   return (
     <form
       component="form"
-      sx={{ p: 2, width: '100%' }}
+      sx={{ width: '100%' }}
       onChange={(e) => handleNewNote(e)}
       onSubmit={(e) => addNote(e)}
     >
-      <Typography variant="h5" component="h5">
+      <Typography variant="h5" component="h5" sx={{ margin: 2, padding: 1 }}>
         New Note
       </Typography>{' '}
       <Divider sx={{ width: '80%' }} />
       <TextField
+        sx={{ margin: 2, padding: 1 }}
         id="note-title"
         variant="standard"
         label="Note Title"
@@ -28,12 +29,9 @@ const NoteForm = ({ handleNewNote, addNote, note }) => {
         name="noteData"
         onChange={handleNewNote}
         value={note.noteData}
+        sx={{ margin: 2, padding: 1 }}
       />
-      <Button
-        type="submit"
-        variant="outlined"
-        sx={{ mt: 2, pr: 1, minWidth: '55%' }}
-      >
+      <Button type="submit" variant="outlined" sx={{ m: 2, minWidth: '55%' }}>
         Add
       </Button>
     </form>

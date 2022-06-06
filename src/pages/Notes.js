@@ -13,18 +13,24 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Add from '@mui/icons-material/Add';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import image from '../static/images/markus-spiske-qhgtBITGZeI-unsplash.jpg';
 import NoteForm from '../components/NotesComponents/NoteForm';
 import key from 'weak-key';
 import DialogAlert from '../helpers/DialogAlert';
+
+const handleNoteLocalStorage = () => {
+  const savedNotes = localStorage.getItem('notes');
+  if (savedNotes) {
+    return JSON.parse(savedNotes);
+  }
+  return [];
+};
+
 const Notes = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [note, setNote] = useState({ id: '', title: '', noteData: '' });
-  const [notes, setNotes] = useState([
-    { id: 1, title: 'Soda1', noteData: 'This is a can of soda1' },
-    { id: 2, title: 'Soda2', noteData: 'This is a can of soda2' },
-  ]);
+  const [notes, setNotes] = useState(() => handleNoteLocalStorage());
   const [error, setError] = useState(null);
   ///modal
   const [openModal, setOpenModal] = useState(false);
@@ -33,6 +39,9 @@ const Notes = () => {
     setOpenModal(false);
   };
 
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
   const handleNewNote = (event) => {
     setNote({
       ...note,
@@ -47,7 +56,6 @@ const Notes = () => {
       return setError('Fill up all inputs');
     }
     setNotes([...notes, note]);
-
     setNote({ title: '', noteData: '' });
     setIsOpen(false);
   };
@@ -104,7 +112,12 @@ const Notes = () => {
         open={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <NoteForm handleNewNote={handleNewNote} note={note} addNote={addNote} />
+        <NoteForm
+          sx={{ m: 2 }}
+          handleNewNote={handleNewNote}
+          note={note}
+          addNote={addNote}
+        />
       </Drawer>
     </Container>
   );

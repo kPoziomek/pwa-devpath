@@ -4,11 +4,14 @@
   "app_geolocation": "Lokalizacja",
   "app_notes": "Notatki",
   "app_camera": "Kamera",
-
+  "app_qr": "skanerQr",
   "app_weather": "Pogoda",
   "user_date": "Witaj dziś mamy, {{today, date}}",
 
+  "keyWithCount_zero": "{{count}} przedmiotów",
   "keyWithCount_one": "{{count}} przedmiot",
-  "keyWithCount_other": "{{count}} przedmioty",
+  "keyWithCount_few": "{{count}} przedmioty",
+  "keyWithCount_many": "{{count}} przedmiotów",
+
   "footer": "Github <1> PWA-i18next-app </1> kod źródłowy.<3/> kliknij i sprawdź kod "
 }

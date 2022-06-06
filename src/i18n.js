@@ -24,8 +24,6 @@ i18next
         return value;
       },
     },
-
-    debug: process.env.NODE_ENV === 'development',
   });
 
 export default i18next;

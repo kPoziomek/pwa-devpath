@@ -4,11 +4,14 @@ export const useDeviceOrientation = () => {
   const [error, setError] = useState(null);
   const [orientation, setOrientation] = useState(null);
 
-  const handleDeviceOrientation = useCallback(({ alpha, beta, gama }) => {
+  const handleDeviceOrientation = useCallback(({ alpha, beta, gamma }) => {
+    console.log('🚀 ~ handleDeviceOrientation ~ beta', beta);
+    console.log('🚀 ~ handleDeviceOrientation ~ gama', gamma);
+
     setOrientation({
       alpha: Math.floor(alpha),
       beta: Math.floor(beta),
-      gama: Math.floor(gama),
+      gamma: Math.floor(gamma),
     });
   }, []);
 

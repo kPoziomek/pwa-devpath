@@ -4,6 +4,7 @@
   "app_geolocation": "Geolocation",
   "app_notes": "Notes",
   "app_camera": "Camera",
+  "app_qr": "scannerQr",
   "app_device": "Devices",
   "app_weather": "Weather",
   "user_date": "Hello, today we have {{today, date}}",

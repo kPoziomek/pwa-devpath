@@ -3,17 +3,17 @@
   "name": "PWA Devpath App",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "icon.png",
       "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -23,6 +23,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "orientation": "portrait-primary",
-  "scope": "/"
+  "orientation": "portrait-primary"
 }

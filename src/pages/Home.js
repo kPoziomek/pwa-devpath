@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
 import Footer from '../components/Footer';
+
 const Home = () => {
   const initialState = { counter: 0 };
   const { t } = useTranslation();
@@ -29,7 +30,6 @@ const Home = () => {
       });
   }, []);
 
-  ///TODO: check why pl translation don't working in count
   return (
     <div>
       <h1>{t('user_date', { today: new Date() })}</h1>

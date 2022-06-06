@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import { Trans } from 'react-i18next';
 
 const Footer = () => {
