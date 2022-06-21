@@ -5,6 +5,7 @@ import './App.css';
 import Navigation from './pages/Navigation';
 import PWAOfflineStatus from './pages/PWAOfflineStatus';
 import { useNetworkState } from 'react-use';
+import { useTranslation } from 'react-i18next';
 const Home = lazy(() => import('./pages/Home'));
 const Geolocation = lazy(() => import('./pages/Geolocation'));
 const Notes = lazy(() => import('./pages/Notes'));
@@ -14,6 +15,7 @@ const Device = lazy(() => import('./pages/Device'));
 const Weather = lazy(() => import('./pages/Weather'));
 
 function App() {
+  const { t } = useTranslation();
   const { online } = useNetworkState();
 
   return !online ? (
@@ -31,7 +33,7 @@ function App() {
       <Router>
         <Navigation />
         <PWAOfflineStatus />
-        <h1>PWA APP SELLEO</h1>
+        <h1>{t('app_title')}</h1>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />

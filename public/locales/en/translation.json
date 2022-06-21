@@ -1,5 +1,6 @@
 {
-  "app_name": "app",
+  "app_title": "PWA App Selleo",
+  "app_name": "App",
   "app_home": "Home",
   "app_geolocation": "Geolocation",
   "app_notes": "Notes",
@@ -8,7 +9,10 @@
   "app_device": "Devices",
   "app_weather": "Weather",
   "user_date": "Hello, today we have {{today, date}}",
-
+  "app_note_title": "New Note",
+  "app_note_button": "Add",
+  "app_note_label_title": "Note Title",
+  "app_note_label_note": "Write Your Note",
   "keyWithCount_one": "{{count}} item",
   "keyWithCount_other": "{{count}} items",
   "footer": " Github  <1> PWA-i18next-app </1> source code.<3/>Click and see source code."

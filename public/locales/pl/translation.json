@@ -1,12 +1,18 @@
 {
+  "app_title": "Aplikacja PWA Selleo",
   "app_name": "Aplikacja",
   "app_home": "Strona Domowa",
   "app_geolocation": "Lokalizacja",
   "app_notes": "Notatki",
   "app_camera": "Kamera",
   "app_qr": "skanerQr",
+
   "app_weather": "Pogoda",
   "user_date": "Witaj dziś mamy, {{today, date}}",
+  "app_note_title": "Nowa Notatka",
+  "app_note_button": "Dodaj",
+  "app_note_label_title": "Tytuł notatki",
+  "app_note_label_note": "Napisz swoją notatkę",
 
   "keyWithCount_zero": "{{count}} przedmiotów",
   "keyWithCount_one": "{{count}} przedmiot",

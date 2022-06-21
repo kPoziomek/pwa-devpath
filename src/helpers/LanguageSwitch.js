@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
+
   return (
     <Box>
       <FormControl variant="standard">
@@ -14,6 +15,8 @@ const LanguageSwitch = () => {
         >
           <MenuItem value="en">English</MenuItem>
           <MenuItem value="pl">Polish</MenuItem>
+          <MenuItem value="zh">Chinese</MenuItem>
+          <MenuItem value="ar">العربية</MenuItem>
         </Select>
       </FormControl>
     </Box>

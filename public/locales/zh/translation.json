@@ -1,0 +1,20 @@
+{
+  "app_title": "應用程序",
+  "app_name": "應用程序",
+  "app_home": "主頁",
+  "app_geolocation": "地點",
+  "app_notes": "筆記",
+  "app_camera": "相機",
+  "app_device": "設備",
+  "app_qr": "二維碼掃描儀",
+  "app_weather": "天氣",
+  "user_date": "你好今天我們有, {{today, date}}",
+  "app_note_title": "新筆記",
+  "app_note_button": "添加",
+  "app_note_label_title": "註釋標題",
+  "app_note_label_note": "寫下你的筆記",
+  "keyWithCount_zero": "安妮买了 {{count}} 书",
+  "keyWithCount_other": "安妮买了 {{count}} 图书",
+
+  "footer": "Github <1> PWA-i18next-app </1> 源碼。<3 />點擊查看代碼"
+}

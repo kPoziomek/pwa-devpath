@@ -9,10 +9,17 @@ i18next
   .use(LanguageDetector)
   .init({
     fallbackLng: 'en', // use en if detected lng is not available
+    detection: {
+      order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
+      caches: ['cookie'],
+    },
 
-    keySeparator: false, // we do not use keys in form messages.welcome
+    keySeparator: false, // we do not use keys in
     nonExplicitSupportedLngs: true,
-    supportedLngs: ['pl', 'en'],
+    supportedLngs: ['pl', 'en', 'zh', 'ar'],
+    backend: {
+      loadPath: '/locales/{{lng}}/translation.json',
+    },
     interpolation: {
       escapeValue: false, // react already safes from xss
       format: (value, format, lng) => {

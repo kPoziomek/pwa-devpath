@@ -4,6 +4,7 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import CameraIcon from '@mui/icons-material/Camera';
 import BuildIcon from '@mui/icons-material/Build';
 import QrCode2Icon from '@mui/icons-material/QrCode2';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 export const appRoutes = [
   {
     id: 1,
@@ -51,7 +52,7 @@ export const appRoutes = [
     id: 7,
     to: '/weather',
     routeName: 'app_weather',
-    Icon: <BuildIcon />,
+    Icon: <WbSunnyIcon />,
     fontSize: 'small',
   },
 ];

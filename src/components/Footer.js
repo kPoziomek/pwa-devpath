@@ -5,7 +5,8 @@ const Footer = () => {
     <footer className="footer">
       <p className="has-text-centered">
         <Trans i18nKey="footer">
-          Github repo <a href="https://phrase.com/blog"> pwa </a> .
+          Github repo{' '}
+          <a href="https://github.com/kPoziomek/pwa-devpath"> pwa </a> .
           <br />
           Click and see source code
         </Trans>

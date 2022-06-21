@@ -1,0 +1,19 @@
+{
+  "app_title": "تطبيق PWA Selleo",
+  "app_name": "تطبيق",
+  "app_home": "مسكن",
+  "app_geolocation": "تحديد الموقع الجغرافي",
+  "app_notes": "ملحوظات",
+  "app_camera": "آلة تصوير",
+  "app_qr": "الماسح الضوئي Qr",
+  "app_device": "الأجهزة",
+  "app_weather": "طقس",
+  "user_date": "مرحبا ، اليوم لدينا,{{today, date}}",
+  "app_note_title": "ملاحظة جديدة",
+  "app_note_button": "يضيف",
+  "app_note_label_title": "عنوان الملاحظة",
+  "app_note_label_note": "اكتب ملاحظتك",
+  "keyWithCount_one": "{{count}} مقالة",
+  "keyWithCount_other": "{{count}} مقالات",
+  "footer": "Github <1> PWA-i18next-app </1> الكود المصدري. <3 /> انقر وشاهد الكود المصدري."
+}
